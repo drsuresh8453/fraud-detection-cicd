@@ -17,13 +17,13 @@ def train(data_path="../data/transactions.csv", model_path="../models/fraud_mode
     X, y = preprocess(data_path)
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42, stratify=y)
+        X, y, test_size=0.3, random_state=42, stratify=y)
     print(f"\nTrain: {X_train.shape[0]} rows | Test: {X_test.shape[0]} rows")
 
     print("\nTraining Logistic Regression...")
     model = make_pipeline(
         StandardScaler(),
-        LogisticRegression(max_iter=1000, random_state=42)
+        LogisticRegression(max_iter=1500, random_state=42)
     )
     model.fit(X_train, y_train)
 
